@@ -17,21 +17,21 @@ let speed = 0.1
 let progress = 1.1
 let increase = 1.1
 let max = 10
+let level = 0;
 isdead = false
 
 function fullReset(){
-  answer = 100
+  level = 0
   error = 0.1
   t = 120
   speed = 0.1
-  progress = 1.1
-  increase = 1.5
   max = 10
   isdead = false
   reset()
 }
 
 function reset(){
+  level++
   geuss = ""
   isdead = false
   t = 120
@@ -84,14 +84,18 @@ function run(){
 }
 
 function timeOut(){
+
   ctx.fillStyle = 'rgb(47, 57, 74)'
   ctx.fillRect(0,0,w,h)
   ctx.font = `italic ${r}px Palatino Linotype`
 
   ctx.fillStyle = 'white'
   ctx.fillText("Time's UP!",w/2,h/2)
+  ctx.font = `italic ${r/6}px Palatino Linotype`
+  ctx.fillText(`Level ${level}:`,w/2,h*3/16)
   ctx.font = `italic ${r/12}px Palatino Linotype`
   ctx.fillText(`Any key to play again`,w/2,h*15/16)
+
 
 }
 function dead(){
@@ -106,9 +110,11 @@ function dead(){
   ctx.fillText("Wrong!",w/2,h/2)
 
   ctx.font = `italic ${r/6}px Palatino Linotype`
+  ctx.fillText(`Level ${level}:`,w/2,h*3/16)
   ctx.fillText(`(It was ${answer}, not ${geuss})`,w/2,h*3/4)
 ctx.font = `italic ${r/12}px Palatino Linotype`
   ctx.fillText(`Any key to play again`,w/2,h*15/16)
+
 
 }
 
