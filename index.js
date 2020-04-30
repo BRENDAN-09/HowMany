@@ -84,6 +84,7 @@ function run(){
 }
 
 function timeOut(){
+  isdead = true
 
   ctx.fillStyle = 'rgb(47, 57, 74)'
   ctx.fillRect(0,0,w,h)
